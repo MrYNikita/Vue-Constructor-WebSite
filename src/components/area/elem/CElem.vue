@@ -3,7 +3,6 @@
         class="elem"
         v-bind:style="style"
         @click="isMove = isMove ? false : true"
-        @move-off="console.log('WW')"
         @mousemove="e => isMove && $emit('elem-move', e, this)"
     >
         <slot></slot>

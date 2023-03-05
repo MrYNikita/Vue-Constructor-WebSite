@@ -4,8 +4,8 @@
         @elem-delete="$emit('elem-delete', $el)"
     >
         <div class="div_elem-content">
-            <input @click="$emit('move-off')"/>
-            <textarea></textarea>
+            <input class="div_elem-content__title" @click="$emit('move-off')"/>
+            <textarea class="div_elem-content__text"></textarea>
         </div>
     </CElem>
 </template>
@@ -22,9 +22,16 @@ export default {
 
 <style scope>
 .div_elem-content {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.div_elem-content>input {
-    background-color: red;
+.div_elem-content>* {
+    margin-top: 5%;
+    border-radius: 2px;
+    background-color: #dbdbdb;
+}
+.div_elem-content__text {
+    height: 80%;
 }
 </style>

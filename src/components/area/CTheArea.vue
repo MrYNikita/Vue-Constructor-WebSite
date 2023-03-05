@@ -2,10 +2,12 @@
     <section id="area">
         <CPanel
             @add-block-text="addBlockText()"
+            @add-block-film="addBlockFilm()"
             @elem-delete="e => elemsText = elemsText.filter(elem => elem !== e)"
         />
         <CTheField
             :elemsText="elemsText"
+            :elemsFilm="elemsFilm"
         />
     </section>
 </template>
@@ -19,6 +21,9 @@ export default {
     data() {
         return {
             elemsText: [
+
+            ],
+            elemsFilm: [
 
             ],
         }
@@ -44,6 +49,15 @@ export default {
             };
 
             this.elemsText.push(elem);
+        },
+        addBlockFilm() {
+            const key = this.elemsFilm?.at(-1)?.key;
+
+            const elem = {
+                key: key || key === 0 ? key + 1 : 0,
+            };
+
+            this.elemsFilm.push(elem);
         },
 
     },

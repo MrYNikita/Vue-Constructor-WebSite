@@ -1,9 +1,15 @@
 <template>
     <section id="field">
         <CElemText
-            v-for="elem in elemsText"
-            :key="elem.key"
+            v-for="text in elemsText"
+            :key="'text' + text.key"
             @move-off="console.log('WW')"
+            @elem-move="(e, d) => move(e, d)"
+            @elem-delete="elem => del(elem)"
+        />
+        <CElemFilm
+            v-for="film in elemsFilm"
+            :key="'film' + film.key"
             @elem-move="(e, d) => move(e, d)"
             @elem-delete="elem => del(elem)"
         />
@@ -11,12 +17,14 @@
 </template>
 
 <script>
+import CElemFilm from './elem/CElemFilm.vue';
 import CElemText from './elem/CElemText.vue';
 
 export default {
     name: "CTheField",
     props: {
         elemsText: Array,
+        elemsFilm: Array,
     },
     data() {
         return {
@@ -34,18 +42,18 @@ export default {
         */
         move(even, elem) {
 
-            if ([HTMLInputElement, HTMLTextAreaElement].find(c => even.target instanceof c)) {
+            if ([HTMLInputElement, HTMLTextAreaElement, HTMLParagraphElement].find(c => even.target instanceof c)) {
 
                 elem.isMove = false;
                 return;
 
             }
 
-            elem.style.top = parseInt(elem.style.top) + even.offsetY - 300 / 2 + 'px';
-            elem.style.left = parseInt(elem.style.left) + even.offsetX - 200 / 2 + 'px';
+            elem.style.top = parseInt(elem.style.top) + even.offsetY - 20 + 'px';
+            elem.style.left = parseInt(elem.style.left) + even.offsetX - 15 + 'px';
         },
     },
-    components: { CElemText }
+    components: { CElemText, CElemFilm }
 }
 </script>
 

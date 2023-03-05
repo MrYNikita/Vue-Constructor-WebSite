@@ -22,7 +22,7 @@ export default {
     height: 90%;
     transition: background-color 0.25s;
     border-radius: 3px;
-    background-color: #d5d5d5;
+    background-color: #dbdbdb;
 }
 .elemPanelButtonClose:hover {
     background-color: #ff8080;
