@@ -1,7 +1,7 @@
 <template>
     <section id="field">
-        <CElem
-            v-for="elem in elems"
+        <CElemText
+            v-for="elem in elemsText"
             :key="elem.key"
             @elem-move="(e, d) => move(e, d)"
             @elem-delete="elem => del(elem)"
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import CElem from './elem/CElem.vue';
+import CElemText from './elem/CElemText.vue';
 
 export default {
     name: "CTheField",
     props: {
-        elems: Array,
+        elemsText: Array,
     },
     data() {
         return {
@@ -36,7 +36,7 @@ export default {
             elem.style.left = parseInt(elem.style.left) + even.offsetX - 200 / 2 + 'px';
         },
     },
-    components: { CElem }
+    components: { CElemText }
 }
 </script>
 

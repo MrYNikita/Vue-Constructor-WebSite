@@ -2,10 +2,10 @@
     <section id="area">
         <CPanel
             @add-block-text="addBlockText()"
-            @elem-delete="e => elems = elems.filter(elem => elem !== e)"
+            @elem-delete="e => elemsText = elemsText.filter(elem => elem !== e)"
         />
         <CTheField
-            :elems="elems"
+            :elemsText="elemsText"
         />
     </section>
 </template>
@@ -18,7 +18,7 @@ export default {
     name: "CTheArea",
     data() {
         return {
-            elems: [
+            elemsText: [
 
             ],
         }
@@ -35,7 +35,7 @@ export default {
             });
         },
         addBlockText() {
-            const key = this.elemText?.at(-1)?.key;
+            const key = this.elemsText?.at(-1)?.key;
 
             const elem = {
                 key: key || key === 0 ? key + 1 : 0,
@@ -43,7 +43,7 @@ export default {
                 content: '',
             };
 
-            this.elems.push(elem);
+            this.elemsText.push(elem);
         },
 
     },

@@ -18,6 +18,7 @@ export default {
     name: "CElem",
     data() {
         return {
+            console,
             key: NaN,
             isMove: false,
             isActive: false,
@@ -28,11 +29,6 @@ export default {
         };
     },
     methods: {
-        /** @arg {MouseEvent} e */
-        move(e) {
-            this.style.top = e.clientY + -300 / 2 + "px";
-            this.style.left = e.clientX + -200 / 2 + "px";
-        },
     },
     components: { CPanel }
 }
