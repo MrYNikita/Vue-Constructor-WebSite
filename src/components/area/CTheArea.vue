@@ -1,8 +1,11 @@
 <template>
     <section id="area">
-        <CPanel @add-block-text="addBlockText()" />
+        <CPanel
+            @add-block-text="addBlockText()"
+            @elem-delete="e => elems = elems.filter(elem => elem !== e)"
+        />
         <CTheField
-            :elem-text="elemText"
+            :elems="elems"
         />
     </section>
 </template>
@@ -15,13 +18,7 @@ export default {
     name: "CTheArea",
     data() {
         return {
-            elemImg: [
-
-            ],
-            elemText: [
-
-            ],
-            elemFilm: [
+            elems: [
 
             ],
         }
@@ -46,7 +43,7 @@ export default {
                 content: '',
             };
 
-            this.elemText.push(elem);
+            this.elems.push(elem);
         },
 
     },

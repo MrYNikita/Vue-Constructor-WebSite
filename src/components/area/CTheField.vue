@@ -1,7 +1,7 @@
 <template>
     <section id="field">
         <CElem
-            v-for="elem in elemText"
+            v-for="elem in elems"
             :key="elem.key"
             @elem-move="(e, d) => move(e, d)"
             @elem-delete="elem => del(elem)"
@@ -16,7 +16,7 @@ export default {
     name: "CTheField",
     props: {
 
-        elemText: Array,
+        elems: Array,
 
     },
     data() {
@@ -27,6 +27,7 @@ export default {
     methods: {
         del(elem) {
             elem.remove();
+            this.$emit('elem-delete', elem.key);
         },
         /**
          * @arg {CElem} elem
@@ -44,7 +45,7 @@ export default {
 <style scope>
 #field {
     position: relative;
-    width: 100%;
+    width: 95%;
     height: 100%;
     grid-area: field;
 }
