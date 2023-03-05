@@ -1,6 +1,11 @@
 <template>
     <section id="field">
-        <CElem v-for="elem in elemText" v-bind:key="elem.id" @elem-move="(e, d) => move(e, d)"/>
+        <CElem
+            v-for="elem in elemText"
+            :key="elem.key"
+            @elem-move="(e, d) => move(e, d)"
+            @elem-delete="elem => del(elem)"
+        />
     </section>
 </template>
 
@@ -14,7 +19,15 @@ export default {
         elemText: Array,
 
     },
+    data() {
+        return {
+            console,
+        }
+    },
     methods: {
+        del(elem) {
+            elem.remove();
+        },
         /**
          * @arg {CElem} elem
          * @arg {MouseEvent} even
@@ -30,6 +43,9 @@ export default {
 
 <style scope>
 #field {
+    position: relative;
+    width: 100%;
+    height: 100%;
     grid-area: field;
 }
 </style>
