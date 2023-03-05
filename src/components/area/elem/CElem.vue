@@ -4,8 +4,8 @@
         v-bind:class="{ active: isActive }"
         v-bind:style="style"
         @click="isMove = isMove ? false : true"
-        @mousemove="e => isMove && move(e)"
-        @mouseout="() => sActive = false">
+        @mousemove="e => isMove && $emit('elem-move', e, this)"
+    >
         <slot></slot>
     </div>
 </template>
@@ -18,8 +18,8 @@ export default {
             isMove: false,
             isActive: false,
             style: {
-                left: '0px',
                 top: '0px',
+                left: '0px',
             },
         }
     },

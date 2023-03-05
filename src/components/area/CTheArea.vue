@@ -1,15 +1,14 @@
 <template>
     <section id="area">
-        <CPanel @add-block-text="addBlockText()" />
-        <CTheField>
-            <CElemText v-for="elem in elemText" v-bind:key="elem.id"/>
-        </CTheField>
+        <CPanel @add-block-text="'ww'" />
+        <CTheField
+            :elem-text="elemText"
+        />
     </section>
 </template>
 
 <script>
 import CTheField from './CTheField.vue';
-import CElemText from './elem/CElemText.vue';
 import CPanel from './panel/CPanel.vue';
 
 export default {
@@ -22,14 +21,17 @@ export default {
             elemText: [
                 {
                     key: 0,
-                }
+                },
+                {
+                    key: 1,
+                },
             ],
             elemFilm: [
 
             ],
         }
     },
-    components: { CPanel, CTheField, CElemText },
+    components: { CPanel, CTheField },
     methods: {
 
         remove() {
