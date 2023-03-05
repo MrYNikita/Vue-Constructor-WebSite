@@ -3,6 +3,7 @@
         <CElemText
             v-for="elem in elemsText"
             :key="elem.key"
+            @move-off="console.log('WW')"
             @elem-move="(e, d) => move(e, d)"
             @elem-delete="elem => del(elem)"
         />
@@ -19,7 +20,7 @@ export default {
     },
     data() {
         return {
-
+            console,
         }
     },
     methods: {
@@ -32,6 +33,14 @@ export default {
          * @arg {MouseEvent} even
         */
         move(even, elem) {
+
+            if ([HTMLInputElement, HTMLTextAreaElement].find(c => even.target instanceof c)) {
+
+                elem.isMove = false;
+                return;
+
+            }
+
             elem.style.top = parseInt(elem.style.top) + even.offsetY - 300 / 2 + 'px';
             elem.style.left = parseInt(elem.style.left) + even.offsetX - 200 / 2 + 'px';
         },

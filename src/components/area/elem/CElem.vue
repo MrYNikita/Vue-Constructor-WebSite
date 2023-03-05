@@ -1,9 +1,9 @@
 <template>
     <div
         class="elem"
-        v-bind:class="{ active: isActive }"
         v-bind:style="style"
         @click="isMove = isMove ? false : true"
+        @move-off="console.log('WW')"
         @mousemove="e => isMove && $emit('elem-move', e, this)"
     >
         <slot></slot>
@@ -20,7 +20,7 @@ export default {
         return {
             console,
             key: NaN,
-            isMove: false,
+            isMove: this.pIsMove,
             isActive: false,
             style: {
                 top: "0px",
@@ -52,9 +52,5 @@ export default {
 }
 .elem:hover {
     background-color: #21ffad;
-}
-
-.active {
-    background-color: red;
 }
 </style>
