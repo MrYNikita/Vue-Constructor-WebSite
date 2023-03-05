@@ -4,8 +4,6 @@
         v-bind:class="{ active: isActive }"
         v-bind:style="style"
         @click="isMove = isMove ? false : true"
-        @mousedown="isMove = isActive ? true : false"
-        @mouseup="isMove = false"
         @mousemove="e => isMove && move(e)"
         @mouseout="() => sActive = false">
         <slot></slot>
@@ -28,14 +26,8 @@ export default {
     methods: {
         /** @arg {MouseEvent} e */
         move(e) {
-            this.style.top = e.offsetY + 'px';
-            this.style.left = e.offsetX + 'px';
-        },
-        active() {
-            this.isActive = true;
-        },
-        unactive() {
-            this.isActive = false;
+            this.style.top = e.clientY + -300 / 2 + 'px';
+            this.style.left = e.clientX + -200 / 2 + 'px';
         },
     },
 }
@@ -48,7 +40,11 @@ export default {
     height: 300px;
     border-radius: 12px;
     position: relative;
+    transition: background-color 0.25s;
     background-color: #fff;
+}
+.elem:hover {
+    background-color: #21ffad;
 }
 
 .active {

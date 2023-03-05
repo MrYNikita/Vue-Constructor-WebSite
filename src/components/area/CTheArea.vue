@@ -20,7 +20,9 @@ export default {
 
             ],
             elemText: [
-
+                {
+                    key: 0,
+                }
             ],
             elemFilm: [
 
