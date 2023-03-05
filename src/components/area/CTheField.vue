@@ -15,13 +15,11 @@ import CElem from './elem/CElem.vue';
 export default {
     name: "CTheField",
     props: {
-
         elems: Array,
-
     },
     data() {
         return {
-            console,
+
         }
     },
     methods: {
